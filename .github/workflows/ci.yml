@@ -42,7 +42,7 @@ jobs:
                https://api.render.com/v1/services/srv-ct72c9jqf0us738blkvg/deploys
 
       - name: Deploy documentation to Netlify
-        run: netlify deploy --prod --dir=target/reports/apidocs --auth=${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: netlify deploy --prod --dir=target/reports/apidocs --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Add badge to README
-        run: echo "![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)" >> README.md
+        run: echo "![CI](https://github.com/diawara9412/tp_CD/actions/workflows/ci.yml/badge.svg)" >> README.md
