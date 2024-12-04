@@ -25,6 +25,9 @@ jobs:
       - name: Build with Maven
         run: ./mvnw clean package -DskipTests
 
+      - name: Generate Javadoc
+        run: ./mvnw javadoc:javadoc
+
       - name: Build Docker image
         run: docker build -t diawara1/my-appcd:main .
 
@@ -42,7 +45,7 @@ jobs:
                https://api.render.com/v1/services/srv-ct72c9jqf0us738blkvg/deploys
 
       - name: Deploy documentation to Netlify
-        run: netlify deploy --prod --dir=target/reports/apidocs --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }}
+        run: netlify deploy --prod --dir=target/site/apidocs --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Add badge to README
         run: echo "![CI](https://github.com/diawara9412/tp_CD/actions/workflows/ci.yml/badge.svg)" >> README.md
